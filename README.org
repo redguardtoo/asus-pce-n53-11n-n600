@@ -1,0 +1,16 @@
+* General
+patched ASUS PCE-N53 PCIe wireless network card.
+
+Please note this driver force the wpa_supplicant to use =wext= driver.
+
+#+begin_src bash
+sudo wpa_supplicant -dd -B -i ra0 -Dwext -c /etc/wpa_supplicant/wpa_supplicant.conf
+#+end_src
+
+I have to hack /lib/netifrc/net/wpa_supplicant.sh on Gentoo to change cli options of wpa_supplicant.
+
+* Install
+#+begin_src bash
+sudo make; sudo make install; sudo modprobe rt5592sta
+#+end_src
+
